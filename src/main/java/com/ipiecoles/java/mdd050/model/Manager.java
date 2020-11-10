@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ipiecoles.java.mdd050.exception.TechnicienException;
 import org.joda.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 public class Manager extends Employe {
 
 	@OneToMany(mappedBy = "manager")
+	//@OneToMany(mappedBy = "manager", cascade = CascadeType.DETACH) //Car si on veut supprimer un manager il faut supprimer les techniciens de sont equipe (il faut vider la liste des techniciens pour l'équipe de ce manager
 	@JsonIgnoreProperties("manager")
 	private Set<Technicien> equipe = new HashSet<>();
 

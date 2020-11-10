@@ -10,8 +10,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-
-public interface EmployeRepository extends JpaRepository<Employe, Long> {
+                                                                                        //JpaRepository already extend from PageAndSorting<>
+/*public interface EmployeRepository extends PagingAndSortingRepository<Employe, Long> /*JpaRepository<Employe, Long> */ /*{ */
+public interface EmployeRepository extends JpaRepository<Employe, Long>{
     Employe findByMatricule(String matricule);
 
     List<Employe> findByNomAndPrenom(String nom, String prenom);
